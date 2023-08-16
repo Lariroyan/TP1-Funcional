@@ -9,12 +9,11 @@ linkR: no se puede repetir un link entre dos ciudades
 
 
 tunelR:
-1. ver si las ciudades existen para buscar los links
-2. ver si los links exiten
+1. ver si las ciudades existen en la region
+2. ver si los links entre esas ciudades exiten en la region
 3. meterlos en una lista
 4. hacer un nuevo tunel con la lista
-5. ver si ese tunel ya esta creado en region
-6. apendearlo a Tunel de region
+5. ver si ese tunel ya esta creado en region, sino apendearlo
 
 Asumo que el usuario es inteligente e ingresa las ciudades en orden
 
