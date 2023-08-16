@@ -1,0 +1,12 @@
+Region.hs
+
+foundR: no se puede repetir una ciudad
+
+linkR: no se puede repetir un link entre dos ciudades
+
+tunelR: que no este establecido
+        no se puede hacer linkAB, linkCD
+
+availableCapacityForR: la capacidad no depende de tunel sino de link 
+C1 - C2 - C3
+si quiero la capacidad de C1 a C3 da error
