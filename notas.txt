@@ -3,6 +3,7 @@ Region.hs
 foundR: no se puede repetir una ciudad
 
 linkR: no se puede repetir un link entre dos ciudades
+       verif que esten las 2 ciudades
 
 tunelR: que no este establecido
         no se puede hacer linkAB, linkCD
