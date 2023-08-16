@@ -13,7 +13,8 @@ newR :: Region
 newR = Reg [] [] []
 
 foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
-foundR (Reg cities links tunel) city = Reg (city:cities) links tunel
+foundR (Reg cities links tunel) city | [x | x <- cities, x == city] /= [] = error "La ciudad ya existe"
+                                     | otherwise = Reg (city:cities) links tunel
 -- verificar que la ciudad no este
 
 linkR :: Region -> City -> City -> Quality -> Region -- enlaza dos ciudades de la región con un enlace de la calidad indicada
