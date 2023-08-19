@@ -4,7 +4,6 @@ import Quality
 import Link
 import Tunel
 import Region
---import Region 
 
 p1 = newP 1 2
 p2 = newP 2 1
