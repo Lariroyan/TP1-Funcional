@@ -1,4 +1,4 @@
-module Tunel ( Tunel, newT,  usesT, delayT )
+module Tunel ( Tunel, newT,  usesT, delayT, connectsT )
    where
 --connectsT, despues de new
 import City

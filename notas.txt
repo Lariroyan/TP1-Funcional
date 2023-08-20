@@ -4,8 +4,9 @@ Region.hs
 foundR: no se puede repetir una ciudad
 
 
-linkR: no se puede repetir un link entre dos ciudades
-       verif que esten las 2 ciudades
+linkR:
+LISTO Verificar que el link no existe
+LISTO Verificar que las ciudades esten en la region
 
 
 tunelR:
@@ -18,6 +19,8 @@ tunelR:
 Asumo que el usuario es inteligente e ingresa las ciudades en orden
 
 
-availableCapacityForR: la capacidad no depende de tunel sino de link 
-C1 - C2 - C3
-si quiero la capacidad de C1 a C3 da error
+availableCapacityForR: 
+--LISTO Ver si existe el enlace entre las dos ciudades con: linkedR reg city1 city2, otherwise = error "Las ciudades no estan enlazadas o no existen"
+--LISTO 1. ver la capacidad total del link entre city1 city2
+--LISTO 2. ver en cuantos tuneles esta ese link
+--LISTO 3. restar la cantidad de tuneles a la capacidad total
