@@ -1,6 +1,9 @@
 Region.hs
 
 
+VER QUE PASA SI LAS CIUDADES SON IGUALES
+
+
 foundR: no se puede repetir una ciudad
 
 
@@ -9,12 +12,13 @@ LISTO Verificar que el link no existe
 LISTO Verificar que las ciudades esten en la region
 
 
-tunelR:
+tunelR:   LISTO
 1. ver si las ciudades existen en la region
 2. ver si los links entre esas ciudades exiten en la region
 3. meterlos en una lista
 4. hacer un nuevo tunel con la lista
 5. ver si ese tunel ya esta creado en region, sino apendearlo
+6. si la capacidad del link es 0, el tunel no se deberia hacer
 
 Asumo que el usuario es inteligente e ingresa las ciudades en orden
 

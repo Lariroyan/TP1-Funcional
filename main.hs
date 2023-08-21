@@ -18,6 +18,8 @@ c4 = newC "d" p4
 q1 = newQ "fo" 5 10
 q2 = newQ "co" 2 40
 
+--q2 = newQ "co" 3 40
+
 l1 = newL c1 c2 q1
 l2 = newL c2 c3 q2
 l3 = newL c3 c1 q2
