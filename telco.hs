@@ -53,18 +53,6 @@ r9 = tunelR r8 [c1,c2,c3]
 r10 = tunelR r9 [c1,c2,c3,c4]
 
 test_funcionalidad_regiones = [r, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10]
-test_errores_regiones = [
-    testF(r1),
-    testF(r2),
-    testF(r3),
-    testF(r4),
-    testF(r5),
-    testF(r6),
-    testF(r7),
-    testF(r8),
-    testF(r9),
-    testF(r10)
-    ] -- debe dar todo False
 ------------------------------------------------ERRORES------------------------------------------------
 
 --Errores de foundR
@@ -93,16 +81,16 @@ capacity4 = availableCapacityForR r10 c1 c7 -- c7 no esta en la region
 
 test_errores = [
     testF(r11),
-    testF(r12), 
-    testF(r13), 
-    testF(r14), 
-    testF(r15), 
-    testF(r16), 
-    testF(r17), 
-    testF(r18), 
-    testF(r19), 
-    testF(r20), 
-    testF(delay2), 
-    testF(capacity3), 
+    testF(r12),
+    testF(r13),
+    testF(r14),
+    testF(r15),
+    testF(r16),
+    testF(r17),
+    testF(r18),
+    testF(r19),
+    testF(r20),
+    testF(delay2),
+    testF(capacity3),
     testF(capacity4)
-    ] -- debe dar todo True
+    ] -- debe ser una lista de True

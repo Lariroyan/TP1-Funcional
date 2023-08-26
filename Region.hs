@@ -7,9 +7,7 @@ import Link
 import Tunel
 
 
-data Region = Reg [City] [Link] [Tunel] deriving (Eq)
-instance Show Region
-   where show (Reg cities links tuneles) = "Ciudades: " ++ show cities ++ "\nLinks: " ++ show links ++ "\nTuneles: " ++ show tuneles ++ "\n \n"
+data Region = Reg [City] [Link] [Tunel] deriving (Eq, Show)
 
 newR :: Region
 newR = Reg [] [] []
