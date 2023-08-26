@@ -1,4 +1,4 @@
-module Region ( Region, newR, foundR, linkR, tunelR, connectedR, linkedR, delayR, availableCapacityForR, cityInR, linkInR, tunelInR, citiesLinkedR, citiesForLinkR, citiesInLinkR, citiesInR, linksCapacityInR, cityInTunelR, cityInCitiesR, linkInTunelR, differentPoint )
+module Region ( Region, newR, foundR, linkR, tunelR, connectedR, linkedR, delayR, availableCapacityForR, cityInR, linkInR, citiesLinkedR, citiesForLinkR, citiesInLinkR, citiesInR, linksCapacityInR, cityInTunelR, cityInCitiesR, linkInTunelR, differentPoint )
    where
 
 import City
@@ -7,7 +7,9 @@ import Link
 import Tunel
 
 
-data Region = Reg [City] [Link] [Tunel] deriving (Eq, Show)
+data Region = Reg [City] [Link] [Tunel] deriving (Eq)
+instance Show Region
+   where show (Reg cities links tuneles) = "Ciudades: " ++ show cities ++ "\n Links: " ++ show links ++ "\n Tuneles: " ++ show tuneles ++ "\n \n"
 
 newR :: Region
 newR = Reg [] [] []
@@ -18,15 +20,15 @@ foundR r@(Reg cities links tunel) city | cityInR r city = error "La ciudad ya ex
                                        | otherwise = Reg (city:cities) links tunel
 
 linkR :: Region -> City -> City -> Quality -> Region -- enlaza dos ciudades de la región con un enlace de la calidad indicada
-linkR r@(Reg c l t) c1 c2 q | linkInR r c1 c2 = error "El link ya existe"
+linkR r@(Reg c l t) c1 c2 q | c1 == c2 = error "Las ciudades no pueden ser iguales"
                             | not (cityInR r c1 && cityInR r c2) = error "Las ciudades no estan en la region"
-                            | c1 == c2 = error "Las ciudades no pueden ser iguales"
+                            | linkInR r c1 c2 = error "El link ya existe"
                             | otherwise = Reg c ((newL c1 c2 q):l) t 
 
 tunelR :: Region -> [ City ] -> Region -- genera una comunicación entre dos ciudades distintas de la región
 tunelR r@(Reg cities links tunel) c | not (citiesInR r c) = error "Las ciudades no estan en la region"
                                     | not (citiesLinkedR r c) = error "Las ciudades no estan enlazadas"
-                                    | tunelInR r c = error "El tunel ya esta creado"
+                                    | connectedR r (head c) (last c) = error "El tunel ya esta creado"
                                     | not (linksCapacityInR r c) = error "Un link no tiene capacidad disponible"
                                     | head c == last c = error "No se puede hacer un tunel entre la misma ciudad"
                                     | otherwise = Reg cities links (newT (citiesInLinkR r (citiesForLinkR c)):tunel)
@@ -38,7 +40,7 @@ linkedR :: Region -> City -> City -> Bool -- indica si estas dos ciudades estan 
 linkedR (Reg _ links _) city1 city2 = length ([x | x <- links, linksL city1 city2 x]) == 1
 
 delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
-delayR r@(Reg _ _ tunel) c1 c2 | connectedR r c1 c2 = delayT (head (cityInTunelR tunel c1 c2))
+delayR r@(Reg _ _ tunel) c1 c2 | connectedR r c1 c2  = delayT (head (cityInTunelR tunel c1 c2))
                                | otherwise = error "Las ciudades no estan conectadas por un tunel o alguna/ambas no existen"
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
@@ -56,9 +58,6 @@ citiesInR region (city:cities) = if (cityInR region city) then citiesInR region 
 
 linkInR :: Region -> City -> City -> Bool
 linkInR (Reg _ links _) c1 c2 = length [link | link <- links, linksL c1 c2 link] /= 0
-
-tunelInR :: Region -> [City] -> Bool
-tunelInR r@(Reg _ _ tunel) cities = newT (citiesInLinkR r (citiesForLinkR cities)) `elem` tunel
 
 differentPoint :: [City] -> City -> Bool
 differentPoint [] city = True
