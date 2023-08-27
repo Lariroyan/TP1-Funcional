@@ -6,7 +6,7 @@ import Tunel
 import Region
 import GHC.Base (TrName(TrNameD))
 import Data.Bool (Bool(True))
-import Region (cityInCitiesR)
+
 
 
 ciudad1 = newC "a" (newP 1 2)
