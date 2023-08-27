@@ -1,5 +1,3 @@
-import Control.Exception
-import System.IO.Unsafe
 import Point
 import City
 import Quality
@@ -9,17 +7,6 @@ import Region
 import GHC.Base (TrName(TrNameD))
 import Data.Bool (Bool(True))
 import Region (cityInCitiesR)
-
-testF :: Show a => a -> Bool
-testF action = unsafePerformIO $ do
-    result <- tryJust isException (evaluate action)
-    return $ case result of
-        Left _ -> True
-        Right _ -> False
-    where
-        isException :: SomeException -> Maybe ()
-        isException _ = Just ()
-
 
 
 ciudad1 = newC "a" (newP 1 2)
