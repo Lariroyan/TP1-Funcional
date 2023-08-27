@@ -4,8 +4,6 @@ import Quality
 import Link
 import Tunel
 import Region
-import GHC.Base (TrName(TrNameD))
-import Data.Bool (Bool(True))
 
 
 
