@@ -1,30 +1,34 @@
 package queue;
 
-public class Queue {
-    private QueueState queueState;
+import java.util.ArrayList;
+import java.util.List;
 
+public class Queue {
+	
+	private List<QueueState> listElements = new ArrayList<>();
+	
     public Queue() {
-        queueState = new EmptyQueue();
+        listElements.add(new EmptyQueue());
     }
 
     public boolean isEmpty() {
-        return queueState.isEmpty();
+        return size() == 0;
     }
 
     public Queue add(Object cargo) {
-        queueState = queueState.add(cargo);
+    	listElements.add(1, new NonEmptyQueue(cargo));
         return this;
     }
 
     public Object take() {
-        return queueState.take();
+        return listElements.remove(size()).take();
     }
 
     public Object head() {
-        return queueState.head();
+        return listElements.get(size()).head();
     }
 
     public int size() {
-        return queueState.size();
+        return listElements.size() - 1;
     }
 }
