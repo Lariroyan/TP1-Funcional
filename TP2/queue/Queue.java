@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Queue {
 	
-	private List<QueueState> listElements = new ArrayList<>();
+    private List<QueueState> listElements = new ArrayList<>();
 	
     public Queue() {
         listElements.add(new EmptyQueue());
