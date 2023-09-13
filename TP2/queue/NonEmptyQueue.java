@@ -9,13 +9,13 @@ public class NonEmptyQueue extends QueueState{
 	}
 	
 	@Override
-    public Object take() {
-        return object;
-    }
+    	public Object take() {
+        	return object;
+    	}
     
-    @Override
-    public Object head() {
-        return object;
-    }
+    	@Override
+    	public Object head() {
+        	return object;
+    	}
    
 }
