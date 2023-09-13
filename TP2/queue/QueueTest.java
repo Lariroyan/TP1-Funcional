@@ -30,7 +30,7 @@ public class QueueTest {
   @Test public void test05TakeReturnsLastAddedObject() {
     Queue queue = new Queue();
     String addedObject = "Something";
-    queue.add( addedObject );
+    queue.add( "Something" );
     
     assertEquals( addedObject, queue.take() );
   }
@@ -76,7 +76,7 @@ public class QueueTest {
       queue.take();
       fail( "Expected Error was not thrown." );
     } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+      assertTrue( e.getMessage().equals( EmptyQueue.ErrorMessage_QueueIsEmpty ) );
     }
   }
 
@@ -88,7 +88,7 @@ public class QueueTest {
       queue.take();
       fail( "Expected Error was not thrown." );
     } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+      assertTrue( e.getMessage().equals( EmptyQueue.ErrorMessage_QueueIsEmpty ) );
     }
   }
 
@@ -98,7 +98,7 @@ public class QueueTest {
       queue.head();
       fail( "Expected Error was not thrown." );
     } catch (Error e) {
-      assertTrue( e.getMessage().equals( "Queue is empty" ) );
+      assertTrue( e.getMessage().equals( EmptyQueue.ErrorMessage_QueueIsEmpty ) );
     }
   }
 }
