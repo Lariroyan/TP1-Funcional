@@ -12,7 +12,7 @@ public class Queue {
     }
 
     public boolean isEmpty() {
-        return size() == 0;
+        return this.size() == 0;
     }
 
     public Queue add(Object cargo) {
@@ -21,11 +21,11 @@ public class Queue {
     }
 
     public Object take() {
-        return listElements.remove(size()).take();
+        return listElements.remove(this.size()).take();
     }
 
     public Object head() {
-        return listElements.get(size()).head();
+        return listElements.get(this.size()).head();
     }
 
     public int size() {
