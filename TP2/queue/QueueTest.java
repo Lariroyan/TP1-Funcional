@@ -83,19 +83,19 @@ public class QueueTest {
   
 
   private Queue queueWithSomething() {
-		return new Queue().add( addedObject );
-	}
+    return new Queue().add( addedObject );
+  }
   
   private Queue queueWithTwoObjects() {
-		Queue queue = new Queue();
-	    queue.add( firstAddedObject );
-	    queue.add( secondAddedObject );
+     Queue queue = new Queue();
+     queue.add( firstAddedObject );
+     queue.add( secondAddedObject );
 	    
-		return queue;
-	}
+     return queue;
+   }
   
   private void assertThrowsLike( Executable executable, String message ) {
-	  assertEquals( message, assertThrows( Error.class, executable ).getMessage() );
+    assertEquals( message, assertThrows( Error.class, executable ).getMessage() );
   }
   
 }
