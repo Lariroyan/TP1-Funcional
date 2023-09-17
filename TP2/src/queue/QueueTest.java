@@ -9,7 +9,7 @@ import org.junit.jupiter.api.function.Executable;
 
 public class QueueTest {
 	
-  String addedObject = "Something";
+  String objectSomething = "Something";
   String firstAddedObject = "First";
   String secondAddedObject = "Second";
   
@@ -23,7 +23,7 @@ public class QueueTest {
   }
   
   @Test public void test03AddedElementsIsAtHead() {
-    assertEquals( "Something", queueWithSomething().head() );
+    assertEquals( objectSomething, queueWithSomething().head() );
   }
 
   @Test public void test04TakeRemovesElementsFromTheQueue() {
@@ -36,7 +36,7 @@ public class QueueTest {
   @Test public void test05TakeReturnsLastAddedObject() {
 	Queue queue = queueWithSomething();
     
-    assertEquals( addedObject, queue.take() );
+    assertEquals( objectSomething, queue.take() );
   }
 
   @Test public void test06QueueBehavesFIFO() {
@@ -83,15 +83,11 @@ public class QueueTest {
   
 
   private Queue queueWithSomething() {
-		return new Queue().add( addedObject );
+		return new Queue().add( objectSomething );
 	}
   
   private Queue queueWithTwoObjects() {
-		Queue queue = new Queue();
-	    queue.add( firstAddedObject );
-	    queue.add( secondAddedObject );
-	    
-		return queue;
+		return new Queue().add( firstAddedObject ).add( secondAddedObject );
 	}
   
   private void assertThrowsLike( Executable executable, String message ) {

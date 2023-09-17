@@ -1,13 +1,14 @@
 package queue;
 
 public class NonEmptyQueue extends QueueState{
-    public Object object;
 	
-    public NonEmptyQueue (Object cargo) {
-        object = cargo;
-    }
+	public Object object;
 	
-    @Override
+	public NonEmptyQueue (Object cargo) {
+		object = cargo;
+	}
+	
+	@Override
     public Object take() {
         return object;
     }
@@ -16,4 +17,5 @@ public class NonEmptyQueue extends QueueState{
     public Object head() {
         return object;
     }
+   
 }
