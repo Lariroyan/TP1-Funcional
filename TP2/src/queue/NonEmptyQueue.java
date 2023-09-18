@@ -2,7 +2,7 @@ package queue;
 
 public class NonEmptyQueue extends QueueState{
 	
-	public Object object;
+	private Object object;
 	
 	public NonEmptyQueue (Object cargo) {
 		object = cargo;
