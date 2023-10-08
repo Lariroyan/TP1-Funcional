@@ -1,10 +1,8 @@
 package sumergible;
 
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -15,7 +13,7 @@ public class SumergibleTest {
 		assertEquals (0, new Sumergible().getCoordenadaX());
 		assertEquals (0, new Sumergible().getCoordenadaY());
 		assertEquals (0, new Sumergible().getProfundidad());
-		assertEquals (0, new Sumergible().getAngulo());
+		assertEquals ("Norte", new Sumergible().getDireccion());
 	}
 	
 	@Test public void test01() { //quedarse en el lugar
@@ -23,7 +21,7 @@ public class SumergibleTest {
 		assertEquals (0, sumergible.getCoordenadaX());
 		assertEquals (0, sumergible.getCoordenadaY());
 		assertEquals (0, sumergible.getProfundidad());
-		assertEquals (0, sumergible.getAngulo());
+		assertEquals ("Norte", sumergible.getDireccion());
 	}
 	
 	@Test public void test02() {
@@ -31,7 +29,7 @@ public class SumergibleTest {
 		assertEquals (0, sumergible.getCoordenadaX());
 		assertEquals (0, sumergible.getCoordenadaY());
 		assertEquals (-1, sumergible.getProfundidad());
-		assertEquals (0, sumergible.getAngulo());
+		assertEquals ("Norte", sumergible.getDireccion());
 	}
 	
 	//test 03 "u"
@@ -46,35 +44,35 @@ public class SumergibleTest {
 	//test 04 "l" "r"
 	@Test public void test04(){
 		Sumergible sumergible = new Sumergible().doThis("l");
-		assertEquals (90, sumergible.getAngulo());
+		assertEquals ("Oeste", sumergible.getDireccion());
 		
 		sumergible.doThis("r");
-		assertEquals (0, sumergible.getAngulo());
+		assertEquals ("Norte", sumergible.getDireccion());
 			
 	}
     //caso de test con r
 	@Test public void test05(){
 		
 		Sumergible sumergible = new Sumergible();
-		assertEquals (0, sumergible.getAngulo());
+		assertEquals ("Norte", sumergible.getDireccion());
 		
 		sumergible.doThis("r");
-		assertEquals (270, sumergible.getAngulo());
+		assertEquals ("Este", sumergible.getDireccion());
 			
 	}
 
 	//caso de test con f 
 	@Test public void test06(){ 
 		Sumergible sumergible = new Sumergible().doThis("f");
-		assertEquals (1, sumergible.getCoordenadaX());
-		assertEquals (0, sumergible.getAngulo());
+		assertEquals (1, sumergible.getCoordenadaY());
+		assertEquals ("Norte", sumergible.getDireccion());
 	}
 	
 	//caso de test con m - no hay que hacerlo todavía pero hay que ir viendo y probando 
 	@Test public void test07(){
 		Sumergible sumergible = new Sumergible().doThis("m d");
 		assertEquals (-1, sumergible.getProfundidad()); 
-		assertEquals (true, sumergible.getEstadoCapsulaLiberada()); 
+		assertTrue (sumergible.getEstadoCapsulaLiberada()); 
 
 		sumergible.doThis("d");
 		assertEquals (-2, sumergible.getProfundidad()); 
@@ -91,8 +89,8 @@ public class SumergibleTest {
 		assertEquals (-1, sumergible.getProfundidad());
 		assertEquals (0, sumergible.getCoordenadaX());
 		assertEquals (0, sumergible.getCoordenadaY());
-		assertEquals (270, sumergible.getAngulo());
-		assertEquals (false, sumergible.getEstadoCapsulaLiberada());
+		assertEquals ("Este", sumergible.getDireccion());
+		assertFalse (sumergible.getEstadoCapsulaLiberada());
 		
 	}
 	
