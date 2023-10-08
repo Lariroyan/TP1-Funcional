@@ -1,5 +1,8 @@
 package sumergible;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //cual es la posicion inicial? 
 //cual es la profundidad?
 //cual es la dirección (ángulo)?
@@ -8,16 +11,19 @@ public class Sumergible {
 	
 	private int coordenadaX;
 	private int coordenadaY;
+	List<Integer> coordenadas = new ArrayList();
 	private int profundidad;
-	private int angulo;
+	private Direccion direccion;
 	private boolean capsulaLiberada;
 	public static String errorMessage_Explota = "No se puede continuar descendiendo";
 	
 	public Sumergible () {
 		coordenadaX = 0;
 		coordenadaY = 0;
+		coordenadas.add(0, coordenadaX);
+		coordenadas.add(1, coordenadaY);
 		profundidad = 0;
-		angulo = 0;
+		direccion = new Norte ();
 		capsulaLiberada = false;
 	}
 	
@@ -38,38 +44,16 @@ public class Sumergible {
 			}
 		}
 		
-		if (comando == 'l') { //////////////////////NORTE SUR ESTE OESTE?
-			if (angulo == 270) {
-				angulo = 0;
-			} else {
-				angulo = angulo + 90;
-			}
+		if (comando == 'l') {
+			direccion = direccion.left();
 		}
 		
 		if (comando == 'r') {
-			if (angulo == 0) {
-				angulo = 270;
-			} else {
-				angulo = angulo - 90;
-			}
+			direccion = direccion.right();
 		}
 		
 		if (comando == 'f') {
-			if (angulo == 0) {
-				coordenadaX = coordenadaX + 1;
-			}
-			
-			if (angulo == 90) {
-				coordenadaY = coordenadaY + 1;
-			}
-			
-			if (angulo == 180) {
-				coordenadaX = coordenadaX - 1;
-			}
-			
-			if (angulo == 270) {
-				coordenadaY = coordenadaY - 1;
-			}
+			coordenadas = direccion.forward(coordenadas.get(0), coordenadas.get(1));
 		}
 		
 		if (comando == 'm') {
@@ -85,8 +69,8 @@ public class Sumergible {
 	
 	//getters
 	public int getProfundidad () {return profundidad;}
-	public int getCoordenadaX () {return coordenadaX;}
-	public int getCoordenadaY () {return coordenadaY;}
-	public int getAngulo () {return angulo;}
+	public int getCoordenadaX () {return coordenadas.get(0);}
+	public int getCoordenadaY () {return coordenadas.get(1);}
+	public String getDireccion () {return direccion.getDireccion();}
 	public boolean getEstadoCapsulaLiberada () {return capsulaLiberada;}
 }
