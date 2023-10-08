@@ -62,7 +62,7 @@ public class Sumergible {
 			} 
 			
 			if (profundidad < -1) {
-				throw new Error (errorMessage_Explota);
+				throw new Error (errorMessage_Explota); ////////// ver esto
 			}
 		}
 	}
