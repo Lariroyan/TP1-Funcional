@@ -94,6 +94,33 @@ public class SumergibleTest {
 		
 	}
 	
+	@Test public void test10(){
+		Sumergible sumergible = new Sumergible().doThis("d u f f l"); 
+		assertEquals (0, sumergible.getProfundidad());
+		assertEquals (0, sumergible.getCoordenadaX());
+		assertEquals (2, sumergible.getCoordenadaY());
+		assertEquals ("Oeste", sumergible.getDireccion());
+		assertFalse (sumergible.getEstadoCapsulaLiberada());
+	}
+
+	@Test public void test11(){ 
+		Sumergible sumergible = new Sumergible().doThis("f f d l");
+		assertEquals (-1, sumergible.getProfundidad());
+		assertEquals (0, sumergible.getCoordenadaX());
+		assertEquals (2, sumergible.getCoordenadaY());
+		assertEquals ("Oeste", sumergible.getDireccion());
+		assertFalse (sumergible.getEstadoCapsulaLiberada());
+	}
+
+	@Test public void test12(){
+		Sumergible sumergible = new Sumergible().doThis("ffdl"); //pruebo con las letras sin espacios
+		assertEquals (-1, sumergible.getProfundidad());
+		assertEquals (0, sumergible.getCoordenadaX());
+		assertEquals (2, sumergible.getCoordenadaY());
+		assertEquals ("Oeste", sumergible.getDireccion());
+		assertFalse (sumergible.getEstadoCapsulaLiberada());
+
+	}
 	
 	
 	
