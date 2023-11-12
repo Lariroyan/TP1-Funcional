@@ -14,6 +14,7 @@ public class Linea {
 	public static String messageFullColumn = "Column is full";
 	public static String messageNotRedsTurn = "It's not red's turn to play";
 	public static String messageNotBluesTurn = "It's not blue's turn to play";
+	public static String messageNotAValidVariant = "Not a valid variant";
 	public static String messageWinnerRed = "Winner: Red";
 	public static String messageWinnerBlue = "Winner: Blue";
 	public static String messageDraw = "Draw";
