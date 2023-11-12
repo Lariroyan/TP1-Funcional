@@ -8,6 +8,6 @@ public class RedTurn extends Turn {
     }
 
     public Turn playBlue(Linea linea, int column) {
-        throw new RuntimeException(messageNotBluesTurn);
+        throw new RuntimeException(Linea.messageNotBluesTurn);
     }
 }
