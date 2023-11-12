@@ -158,7 +158,7 @@ public class Linea {
 						.mapToObj(column -> getElementInPosition(column, row) + " ")
 						.reduce("", (a, b) -> a + b)
 				)
-				.reduce("", (a, b) -> b + "\n" + a) + getWinner () + "\n" + getPositions();
+				.reduce("", (a, b) -> b + "\n" + a) + getPositions() + "\n" + getWinner () ;
 	}
 
 	private char getElementInPosition(int column, int row) {
