@@ -25,14 +25,14 @@ public class TestLine {
     @Test public void test02BlueDoesNotStart(){
         Linea linea = new Linea(6, 7, 'A');
 
-        assertThrowsLike(() -> linea.playBlueAt(1), Turn.messageNotBluesTurn);
+        assertThrowsLike(() -> linea.playBlueAt(1), Linea.messageNotBluesTurn);
     }
 
     @Test public void test03NotRedsTurn(){
         Linea linea = new Linea(6, 7, 'A');
         linea.playRedAt(0);
 
-        assertThrowsLike(() -> linea.playRedAt(1), Turn.messageNotRedsTurn);
+        assertThrowsLike(() -> linea.playRedAt(1), Linea.messageNotRedsTurn);
     }
 
     @Test public void test04VictoryVerticalRedAndEndsModeA() {
