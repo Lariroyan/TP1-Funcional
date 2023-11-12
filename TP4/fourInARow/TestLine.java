@@ -206,7 +206,7 @@ public class TestLine {
     }
 
     @Test  public void test23NotAValidWinVariant() {
-        assertThrowsLike(() -> new Linea(7, 6, 'k'), WinVariant.messageNotAValidVariant);
+        assertThrowsLike(() -> new Linea(7, 6, 'k'), Linea.messageNotAValidVariant);
     }
 
     @Test public void test24InterruptedVertical(){
