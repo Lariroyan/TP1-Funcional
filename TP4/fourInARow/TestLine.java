@@ -42,21 +42,28 @@ public class TestLine {
         assertWhenRedWins(linea);
     }
 
-    @Test public void test05VictoryHorizontalRedAndEndsModeA() {
+    @Test public void test05VictoryVerticalRedAndEndsModeAWithOtherBoard() {
+        Linea linea = new Linea(10, 10, 'A');
+        redVertical(linea);
+
+        assertWhenRedWins(linea);
+    }
+
+    @Test public void test06VictoryHorizontalRedAndEndsModeA() {
         Linea linea = new Linea(7, 6, 'A');
         redHorizonal(linea);
 
         assertWhenRedWins(linea);
     }
 
-    @Test public void test06VictoryDiagonal1RedAndEndsModeB(){
+    @Test public void test07VictoryDiagonal1RedAndEndsModeB(){
         Linea linea = new Linea(7, 6, 'B');
         redDiagonal(linea);
 
         assertWhenRedWins(linea);
     }
 
-    @Test public void test07VictoryDiagonal2RedAndEndsModeB(){
+    @Test public void test08VictoryDiagonal2RedAndEndsModeB(){
         Linea linea = new Linea(7, 6, 'B');
 
         linea.playRedAt(5);
@@ -74,91 +81,91 @@ public class TestLine {
         assertWhenRedWins(linea);
     }
 
-    @Test public void test08VictoryVerticalRedAndEndsModeC() {
+    @Test public void test09VictoryVerticalRedAndEndsModeC() {
         Linea linea = new Linea(7, 6, 'C');
         redVertical(linea);
 
         assertWhenRedWins(linea);
     }
 
-    @Test public void test09VictoryHorizontalRedAndEndsModeC() {
+    @Test public void test10VictoryHorizontalRedAndEndsModeC() {
         Linea linea = new Linea(7, 6, 'C');
         redHorizonal(linea);
 
         assertWhenRedWins(linea);
     }
 
-    @Test public void test10VictoryDiagonalRedAndEndsModeC(){
+    @Test public void test11VictoryDiagonalRedAndEndsModeC(){
         Linea linea = new Linea(7, 6, 'C');
         redDiagonal(linea);
 
         assertWhenRedWins(linea);
     }
 
-    @Test public void test11VictoryVerticalBlueAndEndsModeA() {
+    @Test public void test12VictoryVerticalBlueAndEndsModeA() {
         Linea linea = new Linea(7, 6, 'A');
         blueVertical(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test12VictoryHorizontalBlueAndEndsModeA() {
+    @Test public void test13VictoryHorizontalBlueAndEndsModeA() {
         Linea linea = new Linea(7, 6, 'A');
         blueHorizonal(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test13VictoryDiagonalBlueAndEndsModeB(){
+    @Test public void test14VictoryDiagonalBlueAndEndsModeB(){
         Linea linea = new Linea(7, 6, 'B');
         blueDiagonal(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test14VictoryVerticalBlueAndEndsModeC() {
+    @Test public void test15VictoryVerticalBlueAndEndsModeC() {
         Linea linea = new Linea(7, 6, 'C');
         blueVertical(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test15VictoryHorizontalBlueAndEndsModeC() {
+    @Test public void test16VictoryHorizontalBlueAndEndsModeC() {
         Linea linea = new Linea(7, 6, 'C');
         blueHorizonal(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test16VictoryDiagonalBlueAndEndsModeC(){
+    @Test public void test17VictoryDiagonalBlueAndEndsModeC(){
         Linea linea = new Linea(7, 6, 'C');
         blueDiagonal(linea);
 
         assertWhenBlueWins(linea);
     }
 
-    @Test public void test17GameDoesNotFinishWhenIsDiagonalInModeA(){
+    @Test public void test18GameDoesNotFinishWhenIsDiagonalInModeA(){
         Linea linea = new Linea(7, 6, 'A');
         blueDiagonal(linea);
 
         assertFalse(linea.finished());
     }
 
-    @Test public void test18GameDoesNotFinishWhenIsVerticalInModeB(){
+    @Test public void test19GameDoesNotFinishWhenIsVerticalInModeB(){
         Linea linea = new Linea(7, 6, 'B');
         blueVertical(linea);
 
         assertFalse(linea.finished());
     }
 
-    @Test public void test19GameDoesNotFinishWhenIsHorizontalInModeA(){
+    @Test public void test20GameDoesNotFinishWhenIsHorizontalInModeA(){
         Linea linea = new Linea(7, 6, 'B');
         blueHorizonal(linea);
 
         assertFalse(linea.finished());
     }
 
-    @Test public void test20DrawAndEnds(){
+    @Test public void test21DrawAndEnds(){
         Linea linea = new Linea(4, 4, 'C');
         linea.playRedAt(0);
         linea.playBlueAt(0);
@@ -186,7 +193,7 @@ public class TestLine {
         assertThrowsLike(() -> linea.playRedAt(4), Linea.messageGameFinished);
     }
 
-    @Test public void test21ColumnFull(){
+    @Test public void test22ColumnFull(){
         Linea linea = new Linea(7, 6, 'B');
 
         linea.playRedAt(3);
@@ -199,17 +206,17 @@ public class TestLine {
         assertThrowsLike(() -> linea.playRedAt(3), Linea.messageFullColumn);
     }
 
-    @Test public void test22ColumnOutOfBounds(){
+    @Test public void test23ColumnOutOfBounds(){
         Linea linea = new Linea(7, 6, 'B');
 
         assertThrowsLike(() -> linea.playRedAt(9), Linea.messageColumnOutOfBounds);
     }
 
-    @Test  public void test23NotAValidWinVariant() {
+    @Test  public void test24NotAValidWinVariant() {
         assertThrowsLike(() -> new Linea(7, 6, 'k'), Linea.messageNotAValidVariant);
     }
 
-    @Test public void test24InterruptedVertical(){
+    @Test public void test25InterruptedVertical(){
         Linea linea = new Linea(6, 7, 'A');
 
         linea.playRedAt(1);
@@ -225,7 +232,7 @@ public class TestLine {
         assertFalse(linea.finished());
     }
 
-    @Test public void test25InterruptedHorizonal(){
+    @Test public void test26InterruptedHorizonal(){
         Linea linea = new Linea(6, 7, 'A');
 
         linea.playRedAt(0);
@@ -239,7 +246,7 @@ public class TestLine {
         assertFalse(linea.finished());
     }
 
-    @Test public void test26InterruptedDiagonal(){
+    @Test public void test27InterruptedDiagonal(){
         Linea linea = new Linea(6, 7, 'B');
 
         linea.playRedAt(0);
@@ -263,13 +270,13 @@ public class TestLine {
         assertFalse(linea.finished());
     }
 
-    @Test public void test27show(){
+    @Test public void test28show(){
         Linea linea = new Linea(4, 4, 'A');
 
         assertEquals(linea.show(), "_ _ _ _ \n_ _ _ _ \n_ _ _ _ \n_ _ _ _ \n0 1 2 3 \n\n");
     }
 
-    @Test public void test28show(){
+    @Test public void test29show(){
         Linea linea = new Linea(4, 4, 'A');
 
         blueVertical(linea);
